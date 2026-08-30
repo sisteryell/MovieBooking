@@ -17,13 +17,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "MOVIES")
+@Table(
+    name = "MOVIES",
+    uniqueConstraints = {
+        @UniqueConstraint(
+            columnNames = {"movie_name", "language"}
+        )
+    }
+)
 @Data
 @Builder
 @NoArgsConstructor
