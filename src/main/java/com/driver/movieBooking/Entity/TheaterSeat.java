@@ -1,4 +1,4 @@
-package com.driver.movieBooking.Models;
+package com.driver.movieBooking.Entity;
 
 import com.driver.movieBooking.Enums.SeatType;
 

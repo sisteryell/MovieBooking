@@ -12,9 +12,9 @@ import com.driver.movieBooking.Dtos.ResponseDtos.BulkAddMoviesResponseDto;
 import com.driver.movieBooking.Dtos.ResponseDtos.BulkDeleteMoviesResponseDto;
 import com.driver.movieBooking.Exceptions.MovieAlreadyPresentWithSameNameAndLanguage;
 import com.driver.movieBooking.Exceptions.MovieDoesNotExists;
-import com.driver.movieBooking.Models.Movie;
-import com.driver.movieBooking.Models.Show;
-import com.driver.movieBooking.Models.Ticket;
+import com.driver.movieBooking.Entity.Movie;
+import com.driver.movieBooking.Entity.Show;
+import com.driver.movieBooking.Entity.Ticket;
 import com.driver.movieBooking.Repositories.MovieRepository;
 import com.driver.movieBooking.Repositories.ShowRepository;
 import com.driver.movieBooking.Transformers.MovieTransformer;
@@ -29,13 +29,13 @@ public class MovieService {
     private ShowRepository showRepository;
 
     public String addMovie(MovieEntryDto movieEntryDto) throws MovieAlreadyPresentWithSameNameAndLanguage {
-        Optional<Movie> exisitingMovie = 
+        Optional<Movie> existingMovie =
                 movieRepository.findByMovieNameAndLanguage(
                     movieEntryDto.getMovieName(),
                     movieEntryDto.getLanguage()
                 );
 
-        if(exisitingMovie.isPresent()) {
+        if(existingMovie.isPresent()) {
             throw new MovieAlreadyPresentWithSameNameAndLanguage();
         }
         Movie movie = MovieTransformer.movieDtoToMovie(movieEntryDto);

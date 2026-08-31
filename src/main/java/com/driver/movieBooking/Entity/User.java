@@ -1,4 +1,4 @@
-package com.driver.movieBooking.Models;
+package com.driver.movieBooking.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
