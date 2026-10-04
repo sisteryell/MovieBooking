@@ -1,7 +1,7 @@
 package com.driver.movieBooking.Repositories;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +13,7 @@ import com.driver.movieBooking.Entity.Show;
 public interface ShowRepository extends JpaRepository<Show, Integer> {
     
     @Query(value = "select time from shows where date = :date and movie_id = :movieId and theater_id = :theaterId", nativeQuery = true)
-    public List<Time> getShowTimingsOnDate(@Param("date")Date date, @Param("theaterId")Integer theaterId, @Param("movieId")Integer movieId);
+    public List<LocalTime> getShowTimingsOnDate(@Param("date")Date date, @Param("theaterId")Integer theaterId, @Param("movieId")Integer movieId);
 
     @Query(value = "select movie_id from shows group by movie_id order by count(*) desc limit 1", nativeQuery = true)
     public Integer getMostShowsMovie();
