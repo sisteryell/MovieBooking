@@ -72,7 +72,7 @@ public class ShowService {
         Show show = showOpt.get();
         Theater theater = show.getTheater();
 
-        List<TheaterSeat> theaterSeatList = theater.getTheaterSeatsList();
+        List<TheaterSeat> theaterSeatList = theater.getTheaterSeatList();
 
         List<ShowSeat> showSeatList = show.getShowSeatList();
         for (TheaterSeat theaterSeat : theaterSeatList) {
