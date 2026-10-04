@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -44,10 +44,10 @@ public class ShowController {
     }
 
     @GetMapping("/showTimingsOnDate")
-    public ResponseEntity<List<Time>> showTimingsOnDate(ShowTimingsDto showTimingsDto) {
+    public ResponseEntity<List<LocalTime>> showTimingsOnDate(ShowTimingsDto showTimingsDto) {
         try {
-            List<Time> result = showService.showTimingsOnDate(showTimingsDto);
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            List<LocalTime> result = showService.showTimingsOnDate(showTimingsDto);
+            return ResponseEntity.ok(result);
         } catch (Exception ex) {
             return ResponseEntity.notFound().build();
         }

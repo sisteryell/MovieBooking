@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -97,7 +97,7 @@ public class ShowService {
         return "Show seats have been associated successfully";
     }
 
-    public List<Time> showTimingsOnDate(ShowTimingsDto showTimingsDto) {
+    public List<LocalTime> showTimingsOnDate(ShowTimingsDto showTimingsDto) {
         Date date = showTimingsDto.getDate();
         Integer theaterId = showTimingsDto.getTheaterId();
         Integer movieId = showTimingsDto.getMovieId();
